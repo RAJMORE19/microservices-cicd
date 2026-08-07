@@ -2,6 +2,7 @@
 Enterprise-grade microservices CI/CD pipeline using Jenkins, Docker, Kubernetes, and cloud-native DevOps practices — from developer code commit to production deployment.
 <img width="2752" height="1536" alt="microservices-cicd" src="https://github.com/user-attachments/assets/b8cfc497-dd93-4028-8c12-de7454df414c" />
 
+
 1. AWS Resources & Cost-Effective Sizing
 To run this complete architecture smoothly while keeping costs minimal (ideal for learning/testing):
 
