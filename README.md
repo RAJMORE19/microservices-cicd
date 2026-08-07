@@ -27,4 +27,10 @@ Enterprise-grade microservices CI/CD pipeline using Jenkins, Docker, Kubernetes,
 | `sudo systemctl status jenkins` | Verify Jenkins service | `active (running)` |
 | `sudo cat /var/lib/jenkins/secrets/initialAdminPassword` | Get initial unlock password | Initial admin password displayed |
 
+1. Install and Configure Docker
+Run the following commands in your EC2 terminal to install Docker and give Jenkins permissions to run container commands:
+Update packages and install Docker: sudo apt update && sudo apt install -y docker.io
+Add the Jenkins user to the Docker group: sudo usermod -aG docker jenkins
+Restart the Docker and Jenkins services: sudo systemctl restart docker && sudo systemctl restart jenkins
+
 
