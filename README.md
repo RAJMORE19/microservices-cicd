@@ -2,22 +2,29 @@
 Enterprise-grade microservices CI/CD pipeline using Jenkins, Docker, Kubernetes, and cloud-native DevOps practices — from developer code commit to production deployment.
 <img width="2752" height="1536" alt="microservices-cicd" src="https://github.com/user-attachments/assets/b8cfc497-dd93-4028-8c12-de7454df414c" />
 
+# 1. AWS Resources & Cost-Effective Sizing
 
-1. AWS Resources & Cost-Effective Sizing
-To run this complete architecture smoothly while keeping costs minimal (ideal for learning/testing):
+- **EC2 Instance:** `t2.large` (2 vCPU, 8 GB RAM)
+- **Storage:** `30 GB` EBS (gp3)
+- **Operating System:** Ubuntu Server 24.04 LTS
+- **Security Group:**
+  - `22` (SSH)
+  - `8080` (Jenkins Web UI)
 
-Amazon EC2 (for Jenkins & Kubernetes Control Plane/Worker):
+---
 
-Size: t3.medium (2 vCPUs, 4 GB RAM).
+# Jenkins Setup
 
-Why: t3.micro or t3.small will run out of memory instantly when running Jenkins, Docker builds, and a local Kubernetes cluster (like Minikube or K3s) together. t3.medium is the sweet spot for free-tier-adjacent / low-budget testing.
+| Command | Why | Result |
+|---------|-----|--------|
+| `sudo apt update` | Update package index | Latest package information |
+| `sudo apt install fontconfig openjdk-21-jre -y` | Install Java (Jenkins dependency) | Java installed |
+| `java -version` | Verify Java installation | Java version displayed |
+| `sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key` | Add Jenkins GPG key | Repository trusted |
+| `echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" \| sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null` | Add Jenkins repository | Repository configured |
+| `sudo apt update` | Refresh package list | Jenkins package available |
+| `sudo apt install jenkins -y` | Install Jenkins | Jenkins installed |
+| `sudo systemctl status jenkins` | Verify Jenkins service | `active (running)` |
+| `sudo cat /var/lib/jenkins/secrets/initialAdminPassword` | Get initial unlock password | Initial admin password displayed |
 
-Amazon EKS (Alternative Managed Kubernetes):
 
-If using managed EKS, use 1 node of t3.medium, but note that EKS control plane charges hourly, so a single EC2 instance running K3s/Minikube is cheaper.
-
-Storage (EBS):
-
-Size: 30 GB gp3 root volume.
-
-Why: Docker images, build caches, and logs take up space quickly. 30 GB is the AWS Free Tier limit for gp3 and prevents "disk full" pipeline crashes.
