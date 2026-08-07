@@ -1,1 +1,19 @@
-(Kubernetes Deployment, Service for Cart)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart
+  template:
+    metadata:
+      labels:
+        app: cart
+    spec:
+      containers:
+      - name: cart
+        image: your-dockerhub-username/cart-service:latest
+        ports:
+        - containerPort: 5000
