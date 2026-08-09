@@ -246,4 +246,136 @@ Trivy ✅
 **GitHub note:** `apt-key` wala failed method **mat likhna**. Above **keyring-based method is your working installation procedure**.
 
 =========================================================================================================================
+**Tumhare current status**
+
+AWS EC2                    ✅
+Ubuntu                     ✅
+Jenkins                    ✅
+Docker                     ✅
+Docker Compose             ✅
+SonarQube                  ✅
+Trivy                      ✅
+OWASP Dependency-Check     ⚙️ Jenkins mein configure karna baaki
+
+Ab next kya karna hai?
+1️⃣ SonarQube ko Jenkins se connect karo — NEXT
+Bro, **GitHub → Jenkins → SonarQube** ka purpose aur exact steps GitHub notes me aise likho:
+
+# GitHub → Jenkins → SonarQube Integration
+
+### Why?
+
+```text
+GitHub
+  ↓
+Jenkins
+  ↓
+Build/Test
+  ↓
+SonarQube
+  ↓
+Code Quality + Security Analysis
+  ↓
+Quality Gate
+```
+
+SonarQube checks **Bugs, Vulnerabilities, Code Smells, Coverage, Security**.
+
+> **Note:** GitHub ko SonarQube se directly connect nahi kar rahe. GitHub code Jenkins checkout karega, aur Jenkins us code ka SonarQube analysis karega.
+
+---
+
+### 1️⃣ Install SonarQube Scanner in Jenkins
+
+```text
+Jenkins
+→ Manage Jenkins
+→ Plugins
+→ Available plugins
+→ SonarQube Scanner
+→ Install
+```
+
+---
+
+### 2️⃣ Create SonarQube Project
+
+Open:
+
+```text
+http://<EC2-PUBLIC-IP>:9000
+```
+
+```text
+Login: admin
+→ Create Project
+→ Project Key: microservices-cicd
+→ Project Name: microservices-cicd
+```
+
+---
+
+### 3️⃣ Generate SonarQube Token
+
+```text
+SonarQube
+→ My Account
+→ Security
+→ Tokens
+→ Generate Token
+```
+
+```text
+Name: jenkins-token
+```
+
+**Token copy karo — ye Jenkins authentication ke liye hai.**
+
+---
+
+### 4️⃣ Save Token in Jenkins
+
+```text
+Jenkins
+→ Manage Jenkins
+→ Credentials
+→ System
+→ Global credentials
+→ Add Credentials
+```
+
+```text
+Kind: Secret text
+Secret: <SonarQube Token>
+ID: sonar-token
+Description: SonarQube Token
+```
+
+---
+
+### 5️⃣ Connect SonarQube Server to Jenkins
+
+```text
+Manage Jenkins
+→ System
+→ SonarQube servers
+→ Add SonarQube
+```
+
+```text
+Name: SonarQube
+Server URL: http://localhost:9000
+Authentication Token: sonar-token
+→ Apply
+→ Save
+```
+
+**Result:**
+
+```text
+GitHub → Jenkins → SonarQube → Quality Gate
+```
+
+Next: **GitHub → Jenkins connection + Jenkinsfile**.
+
 
