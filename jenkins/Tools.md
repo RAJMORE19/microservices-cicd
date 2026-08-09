@@ -22,6 +22,8 @@ Jenkins mein **Quality Gate fail** ho sakta hai, aur pipeline aage deploy nahi k
 
 ### Interview mein 10 sec answer > **"SonarQube is a static code analysis tool used in CI/CD to detect bugs, vulnerabilities, code smells, and measure code quality and test coverage. We use its Quality Gate to prevent poor-quality code from moving further in the pipeline."**
 
+
+**DOCKER ME**
 Bro, **SonarQube ko Docker container mein isliye choose kar rahe hain** because tumhare current project mein **fast + isolated + easy-to-manage setup** chahiye.
 
 ### 10-sec understanding
