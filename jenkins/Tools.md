@@ -1,4 +1,4 @@
-**SonarQube kya karta hai?**
+**SonarQube kya karta hai?** Static Code Analysis = code ko run kiye bina, automatically inspect karke bugs, security issues aur bad coding practices find karna. 
 > **SonarQube developer ke code ki quality aur security check karta hai.**
 Jenkins pipeline mein generally:
 **Developer → GitHub → Jenkins → SonarQube → Docker Build → Trivy → ECR → Deploy**
