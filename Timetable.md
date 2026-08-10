@@ -1,6 +1,6 @@
 📅 Weekly
 
-Time| Monday – Saturday
-☸️ One Day| CKA — Maximum Focus
-☁️ Next Day| Cloud — Maximum Focus
+Focus| Monday – Saturday
+☸️ CKA| One day — Maximum Focus
+☁️ Cloud| Next day — Maximum Focus
 🏋️ Gym| 7:30 PM – 8:30 PM
