@@ -1,3 +1,4 @@
+Library jake preparaction kar and 8 am to 7pm disiine me reh 
 ## 📅 Weekly Focus — Monday to Saturday
 
 | Focus                    | Schedule                                          |
